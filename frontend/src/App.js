@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import CommentSection from './CommentSection';
+import CommentSection from './components/CommentSection';
 
 function App() {
   return (
