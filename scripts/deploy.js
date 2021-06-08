@@ -1,7 +1,7 @@
 async function main() {
-    const commentsSectionContractFactory = await ethers.getContractFactory("CommentsSection");
-    const commentsSectionContract = await commentsSectionContractFactory.deploy();
-    console.log("Contract deployed to: " + commentsSectionContract.address);
+    const commentSectionContractFactory = await ethers.getContractFactory("CommentSection");
+    const commentSectionContract = await commentSectionContractFactory.deploy();
+    console.log("Contract deployed to: " + commentSectionContract.address);
 }
 
 main()
