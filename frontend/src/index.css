@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.row {
+  margin-bottom: 50px;
+}
+
+#connectWalletButton:hover {
+  background-color: white;
+  color: #007bff;
+}
+
+#root .container:first-child {
+  margin-top: 50px;
+}
