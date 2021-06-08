@@ -37,6 +37,8 @@
     ]
   },
   "devDependencies": {
-    "@alch/alchemy-web3": "^1.0.3"
+    "@alch/alchemy-web3": "^1.0.3",
+    "bootstrap": "^4.6.0",
+    "react-bootstrap": "^1.6.1"
   }
 }
