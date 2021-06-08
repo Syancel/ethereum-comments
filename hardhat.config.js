@@ -2,7 +2,7 @@
  * @type import('hardhat/config').HardhatUserConfig
  */
 
-require("dotenv");
+require("dotenv").config();
 require("@nomiclabs/hardhat-ethers");
 
 const { ALCHEMY_KOVAN_URL, PRIVATE_KEY } = process.env;
