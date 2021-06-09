@@ -23,12 +23,15 @@ const CommentSection = () => {
     const [newComment, setNewComment] = useState("");
 
     useEffect(async () => {
-
+        const { address, status } = await getCurrentWalletConnected();
+        setWalletAddress(address);
+        setStatus(status);
+        addWalletListener();
     }, []);
 
     const onWalletConnectPressed = async () => {
-        const { account, status } = await connectWallet();
-        setWalletAddress(account);
+        const { address, status } = await connectWallet();
+        setWalletAddress(address);
         setStatus(status);
     }
 
@@ -36,8 +39,24 @@ const CommentSection = () => {
         // TODO: Implement
     }
 
-    function addAddedCommentListener() {
+    const addAddedCommentListener = () => {
         // TODO: Implement
+    }
+
+    const addWalletListener = () => {
+        if(window.ethereum) {
+            window.ethereum.on('accountsChanged', (accounts) => {
+                if(accounts.length > 0) {
+                    setWalletAddress(accounts[0]);
+                    setStatus("");
+                } else {
+                    setWalletAddress("");
+                    setStatus("🦊 Connect to Metamask using the top-right button.");
+                }
+            });
+        } else {
+            setStatus("🦊 Please install Metamask.");
+        }
     }
 
     return (
