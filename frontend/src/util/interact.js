@@ -17,25 +17,52 @@ export const connectWallet = async () => {
                 method: 'eth_requestAccounts'
             });
             return {
-                account: addressArray[0],
+                address: addressArray[0],
                 status: ""
             }
         } catch(error) {
             return {
-                account: "",
+                address: "",
                 status: `😟 ${error.message}`
             }
         }
     } else {
         return {
-            account: "",
+            address: "",
             status: "🦊 Please install Metamask."
         }
     }
 }
 
 export const getCurrentWalletConnected = async () => {
-    // TODO: Implement
+    if(window.ethereum) {
+        try {
+            const addressArray = await window.ethereum.request({
+                method: 'eth_accounts'
+            });
+            if(addressArray.length > 0) {
+                return {
+                    address: addressArray[0],
+                    status: ""
+                }
+            } else {
+                return {
+                    address: "",
+                    status: "🦊 Connect to Metamask using the top-right button."
+                }
+            }
+        } catch(error) {
+            return {
+                address: "",
+                status: `😟 ${error.message}`
+            }
+        }
+    } else {
+        return {
+            address: "",
+            status: "🦊 Please install Metamask."
+        }
+    }
 }
 
 export const loadComments = async () => {
