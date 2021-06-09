@@ -1,6 +1,13 @@
 import ConnectWalletButton from './ConnectWalletButton';
 import Comment from './Comment';
 
+import {
+    connectWallet,
+    getCurrentWalletConnected,
+    loadComments,
+    addComment
+} from '../util/interact';
+
 import React, { useEffect, useState } from "react";
 
 import Button from 'react-bootstrap/Button';
@@ -20,7 +27,9 @@ const CommentSection = () => {
     }, []);
 
     const onWalletConnectPressed = async () => {
-        // TODO: Implement
+        const { account, status } = await connectWallet();
+        setWalletAddress(account);
+        setStatus(status);
     }
 
     const onAddCommentPressed = async () => {
